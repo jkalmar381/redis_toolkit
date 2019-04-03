@@ -28,14 +28,14 @@ monitor_start() {
     docker run -it -d -p 6379:6379 --name redis_toolkit_db -v $(pwd)/db/data/:/var/lib/redis/ --network=$NETWORK $(whoami)/redis_toolkit_db
 
     # Check if the local redis is available.
-    while [ 1 ]; do
-        pong=`redis-cli ping`
-        if [ "$pong" = "PONG" ]; then
-            break
-        else
-            sleep 1
-        fi
-    done
+   # while [ 1 ]; do
+   #     pong=`redis-cli ping`
+   #     if [ "$pong" = "PONG" ]; then
+   #         break
+   #     else
+   #         sleep 1
+   #     fi
+   # done
 
     # Flush the previous data.
     redisflush=`redis-cli flushall`
